@@ -1,5 +1,10 @@
 import { useState } from 'react'
 import { format } from 'date-fns';
+import PropTypes from 'prop-types';
+
+DateInput.propTypes = {
+  onDateUpdated: PropTypes.func
+}
 
 export default function DateInput({ onDateUpdated }) {
   const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-d'));

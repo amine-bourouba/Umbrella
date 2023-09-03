@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { Combobox } from '@headlessui/react'
+import PropTypes from 'prop-types';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+LocationInput.propTypes = {
+  onLocationUpdated: PropTypes.func
 }
+
 
 export default function LocationInput({ onLocationUpdated }) {
   let [input, setInput] = useState('');
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null)
+  
+  const classNames = (...classes) => {
+    return classes.filter(Boolean).join(' ')
+  }
 
   const handleInputChange = async (event) => {
     const newInput = event.target.value;
